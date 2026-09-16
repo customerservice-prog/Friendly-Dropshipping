@@ -1,19 +1,4 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
-const site="https://eventequipmentdirect.com";
-export const metadata: Metadata = {
- metadataBase:new URL(site),
- title:{default:"Event Equipment Direct | Commercial Tents, Tables, Chairs & Inflatables",template:"%s | Event Equipment Direct"},
- description:"Shop commercial event equipment for rental companies, venues and event professionals. Tents, folding tables, chairs, inflatables, tent parts, blowers and fleet equipment shipped nationwide.",
- keywords:["commercial event equipment","party rental equipment for sale","commercial party tents","event tables for sale","event chairs for sale","commercial inflatables","tent parts","party rental business equipment"],
- alternates:{canonical:"/"},
- openGraph:{type:"website",url:site,siteName:"Event Equipment Direct",title:"Event Equipment Direct | Commercial Event Equipment",description:"Commercial tents, tables, chairs, inflatables, replacement parts and rental-fleet equipment shipped nationwide.",images:[{url:"https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1600",width:1600,height:1067,alt:"Commercial event tent setup"}]},
- twitter:{card:"summary_large_image",title:"Event Equipment Direct",description:"Commercial event equipment for rental businesses and venues.",images:["https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1600"]},
- robots:{index:true,follow:true,googleBot:{index:true,follow:true,"max-image-preview":"large","max-snippet":-1,"max-video-preview":-1}},
-};
-
-export default function RootLayout({children}:{children:React.ReactNode}){
- const schema={"@context":"https://schema.org","@type":"OnlineStore",name:"Event Equipment Direct",url:site,description:"Commercial event equipment for rental companies, venues and event professionals.",areaServed:"US",sameAs:[]};
- return <html lang="en"><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/></body></html>
-}
+import type {Metadata} from 'next';import './globals.css';import {SiteFooter} from '@/components/site-footer';
+const site='https://eventequipmentdirect.com';
+export const metadata:Metadata={metadataBase:new URL(site),title:{default:'Event Equipment Direct | Commercial Tents, Tables, Chairs & Inflatables',template:'%s | Event Equipment Direct'},description:'Shop commercial event equipment for rental companies, venues and event professionals. Tents, folding tables, chairs, inflatables, tent parts, blowers and fleet equipment shipped nationwide.',keywords:['commercial event equipment','party rental equipment for sale','commercial party tents','event tables for sale','event chairs for sale','commercial inflatables','tent parts','party rental business equipment'],alternates:{canonical:'/'},openGraph:{type:'website',url:site,siteName:'Event Equipment Direct',title:'Event Equipment Direct | Commercial Event Equipment',description:'Commercial tents, tables, chairs, inflatables, replacement parts and rental-fleet equipment shipped nationwide.',images:[{url:'https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1600',width:1600,height:1067,alt:'Commercial event tent setup'}]},twitter:{card:'summary_large_image',title:'Event Equipment Direct',description:'Commercial event equipment for rental businesses and venues.',images:['https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?auto=compress&cs=tinysrgb&w=1600']},robots:{index:true,follow:true,googleBot:{index:true,follow:true,'max-image-preview':'large','max-snippet':-1,'max-video-preview':-1}}};
+export default function RootLayout({children}:{children:React.ReactNode}){const schema={"@context":"https://schema.org","@type":"OnlineStore",name:'Event Equipment Direct',url:site,description:'Commercial event equipment for rental companies, venues and event professionals.',areaServed:'US'};return <html lang="en"><body>{children}<SiteFooter/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/></body></html>}

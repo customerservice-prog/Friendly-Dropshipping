@@ -1,1 +1,40 @@
-import type {MetadataRoute} from 'next';import {categories,products} from '@/lib/catalog';const base='https://eventequipmentdirect.com';export default function sitemap():MetadataRoute.Sitemap{const now=new Date();const pages=['about','buying-guides','quote','starter-packages','shipping','returns','privacy','terms'];return [{url:base,lastModified:now,changeFrequency:'weekly',priority:1},...pages.map(x=>({url:`${base}/${x}`,lastModified:now,changeFrequency:'monthly' as const,priority:x==='starter-packages'||x==='buying-guides'?.8:.55})),...categories.map(c=>({url:`${base}/category/${c.slug}`,lastModified:now,changeFrequency:'weekly' as const,priority:.85})),...products.map(p=>({url:`${base}/product/${p.slug}`,lastModified:now,changeFrequency:'weekly' as const,priority:.8}))];}
+import type { MetadataRoute } from 'next';
+import { categories, products } from '@/lib/catalog';
+
+const base = 'https://eventequipmentdirect.com';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+  const pages = [
+    { path: 'about', priority: 0.55 },
+    { path: 'buying-guides', priority: 0.8 },
+    { path: 'quote', priority: 0.75 },
+    { path: 'starter-packages', priority: 0.8 },
+    { path: 'shipping', priority: 0.55 },
+    { path: 'returns', priority: 0.55 },
+    { path: 'privacy', priority: 0.35 },
+    { path: 'terms', priority: 0.35 },
+  ];
+
+  return [
+    { url: base, lastModified: now, changeFrequency: 'weekly', priority: 1 },
+    ...pages.map(({ path, priority }) => ({
+      url: `${base}/${path}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority,
+    })),
+    ...categories.map((category) => ({
+      url: `${base}/category/${category.slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    })),
+    ...products.map((product) => ({
+      url: `${base}/product/${product.slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+  ];
+}
